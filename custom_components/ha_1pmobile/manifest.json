@@ -1,0 +1,11 @@
+{
+  "domain": "ha_1pmobile",
+  "name": "1pMobile Account",
+  "version": "0.3.0",
+  "documentation": "https://github.com/HeyKevHere/HA_1pmobile",
+  "issue_tracker": "https://github.com/HeyKevHere/ha_1pmobile/issues",
+  "codeowners": [],
+  "config_flow": true,
+  "iot_class": "cloud_polling",
+  "requirements": []
+}

@@ -1,0 +1,30 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect 1pMobile",
+        "description": "Enter your 1pMobile website login. The integration reads the Calls and Texts usage pages and account credit.",
+        "data": {
+          "username": "Phone number or email address",
+          "password": "Password"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "This account is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "1pMobile options",
+        "description": "Contacts: enter one mapping per line as phone number = display name. If Enter submits the form, use Shift+Enter or paste the mappings from a text editor. Notification service example: notify.mobile_app_your_phone. The summary is sent on the first successful update each local day.",
+        "data": {
+          "contacts": "Phone number = display name (one per line)",
+          "notify_service": "Notification service",
+          "poll_hour": "Daily check hour (0–23)"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+DOMAIN = "ha_1pmobile"
+CONF_USERNAME = "username"
+CONF_PASSWORD = "password"
+CONF_CONTACTS = "contacts"
+CONF_NOTIFY_SERVICE = "notify_service"
+CONF_POLL_HOUR = "poll_hour"
+DEFAULT_POLL_HOUR = 7
+DEFAULT_CONTACTS = ""
+DEFAULT_NOTIFY_SERVICE = ""
