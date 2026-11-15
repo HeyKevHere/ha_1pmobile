@@ -134,4 +134,4 @@ Suggestions, bug reports and contributions are welcome. Please use the GitHub Is
 
 ## Licence
 
-See the accompanying `LICENSE` file for licence details.
+This project is licensed under the MIT License – see the LICENSE file for details.
