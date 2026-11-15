@@ -9,7 +9,8 @@ A custom integration for [Home Assistant](https://www.home-assistant.io/) that c
 - **SMS history** – Retrieve details of outgoing text messages, including destination number, date, time and cost.
 - **Contact mapping** – Assign friendly names to telephone numbers to make activity history easier to understand.
 - **Recent activity** – Maintain a history of recent calls and text messages.
-- **Daily summaries** – Provide information about new activity and your remaining account balance.
+- **Daily notifications** – Receive a daily summary of new activity and your remaining account balance.
+- **Configurable notifications** – Choose which Home Assistant notification service receives the daily summary.
 - **Monthly usage** – Monitor monthly calls, SMS messages, costs and data usage.
 
 ## Installation
@@ -58,6 +59,8 @@ The integration uses Home Assistant's configuration flow.
 3. Search for **1pMobile**.
 4. Enter your 1pMobile account credentials when prompted.
 
+After installation, use the integration's **Configure** option to access any available integration settings, including notification preferences.
+
 ## Contact name mapping
 
 Telephone numbers can be associated with friendly contact names to make call and SMS history easier to read.
@@ -79,6 +82,51 @@ For example:
 Add one entry per telephone number. Use the full telephone number, followed by an equals sign (`=`), followed by the contact's preferred name.
 
 The integration can then display the contact name instead of the telephone number wherever contact mapping is supported.
+
+## Notifications
+
+The integration supports daily notifications containing information about new outgoing calls and SMS messages, together with your current account balance.
+
+### Configuring the notification service
+
+The notification destination is configured through the integration's notification settings.
+
+1. Go to **Settings → Devices & Services**.
+2. Find the **1pMobile** integration.
+3. Select **Configure**.
+4. Set the notification service to the Home Assistant notification service you want to use.
+5. Save the configuration.
+
+For example, if you use the Home Assistant Companion App on your mobile device, the notification service might be:
+
+```yaml
+notify.mobile_app_number_1
+```
+
+Replace this with the notification service belonging to your own device.
+
+### Daily notification
+
+Once configured, the integration can send its daily activity summary to the selected notification service.
+
+The summary includes new outgoing calls and SMS messages, with contact names where a number mapping is available, as well as your current account balance.
+
+### Sending a notification manually
+
+You can also use the standard Home Assistant notification service in your own automations or scripts.
+
+For example:
+
+```yaml
+action: notify.mobile_app_number_1
+data:
+  title: "1pMobile Account"
+  message: >
+    Your current 1pMobile balance is
+    £{{ states('sensor.1pmobile_balance') }}.
+```
+
+This example sends a notification showing your current account balance. Change the notification service and sensor entity if your installation uses different names.
 
 ## Entities
 
@@ -120,6 +168,13 @@ If the integration does not appear after installation:
 4. Restart Home Assistant.
 5. Check **Settings → System → Logs** for integration errors.
 
+If notifications are not arriving:
+
+1. Check that the selected notification service exists in Home Assistant.
+2. Check that the Home Assistant Companion App is registered and able to receive notifications.
+3. Test the notification service independently using Developer Tools → Actions.
+4. Check the Home Assistant logs for integration errors.
+
 If sensors report `unknown` or `unavailable`, check that your 1pMobile account credentials are correct and that the 1pMobile service is accessible.
 
 ## Disclaimer
@@ -134,4 +189,4 @@ Suggestions, bug reports and contributions are welcome. Please use the GitHub Is
 
 ## Licence
 
-This project is licensed under the MIT License – see the LICENSE file for details.
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
